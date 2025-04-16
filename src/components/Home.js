@@ -84,29 +84,57 @@ function Home() {
         <div className="testimonial-cards">
           <div className="testimonial-card">
             <p>
-              "This platform helped me discover my true calling in UX design.
-              The personality quiz was spot-on with its recommendations!"
+              "Taking the career quiz gave me clarity and confidence. It led me
+              to pursue Data Science, and now I’m interning at a top tech firm!"
             </p>
             <div className="testimonial-author">
-              <div className="author-avatar">JD</div>
+              <div className="author-avatar">RS</div>
               <div className="author-info">
-                <h4>Jamie Davis</h4>
-                <p>UX Designer</p>
+                <h4>Riya Sharma</h4>
+                <p>Data Science Intern</p>
               </div>
             </div>
           </div>
 
           <div className="testimonial-card">
             <p>
-              "The mentorship forum connected me with an industry veteran who
-              guided me through my career transition. I couldn't be more
-              grateful."
+              "The mentorship sessions were incredibly insightful. My mentor
+              helped me crack my first interview at a product-based company."
             </p>
             <div className="testimonial-author">
-              <div className="author-avatar">MT</div>
+              <div className="author-avatar">AK</div>
               <div className="author-info">
-                <h4>Morgan Taylor</h4>
-                <p>Software Engineer</p>
+                <h4>Arjun Kumar</h4>
+                <p>Frontend Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <p>
+              "Thanks to this platform, I explored Cloud Computing and now I’m
+              pursuing my specialization with full clarity about my future
+              goals."
+            </p>
+            <div className="testimonial-author">
+              <div className="author-avatar">NS</div>
+              <div className="author-info">
+                <h4>Nikita Singh</h4>
+                <p>Engineering Student</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <p>
+              "The community and quiz made me realize my passion lies in UI/UX.
+              I’ve now designed for 3 startups and continue to grow every day."
+            </p>
+            <div className="testimonial-author">
+              <div className="author-avatar">VH</div>
+              <div className="author-info">
+                <h4>Vedant Hegde</h4>
+                <p>UI/UX Designer</p>
               </div>
             </div>
           </div>

@@ -92,7 +92,7 @@ button {
 
 .mentors-header p {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: rgb(65, 16, 113);
   max-width: 700px;
   margin: 1.75rem auto 0;
   opacity: 0;
@@ -229,7 +229,7 @@ button {
 }
 
 .mentor-card {
-  background-color: var(--background-card);
+  /* background-color: var(--background-card); */
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -249,7 +249,7 @@ button {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: var(--primary-gradient);
+  /* background: var(--primary-gradient); */
   z-index: -1;
   border-radius: calc(var(--border-radius-lg) + 2px);
   opacity: 0;
@@ -1563,12 +1563,12 @@ button {
     /* Dark mode support */
     @media (prefers-color-scheme: dark) {
       :root {
-        --text-primary: #f1f5f9;
-        --text-secondary: #cbd5e1;
+        --text-primary: #111214;
+        --text-secondary: #6f7274;
         --text-light: #64748b;
-        --background-light: #1e293b;
-        --background-white: #0f172a;
-        --background-card: #1e293b;
+        /* --background-light: #1e293b; */
+        /* --background-white: #0f172a; */
+        --background-card: #eeeef3;
         --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
         --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
         --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -1576,7 +1576,7 @@ button {
       }
   
       .mentor-rating {
-        background-color: rgba(15, 23, 42, 0.95);
+        background-color: rgba(129, 162, 240, 0.95);
         color: var(--text-primary);
       }
   
