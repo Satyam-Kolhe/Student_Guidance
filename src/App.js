@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Auth from './components/Auth';
@@ -9,37 +9,65 @@ import QuizComponent from './components/QuizComponent';
 import Recommendations from './components/Recommendations';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      setCurrentUser(user);
-    }
-  }, []);
-
   const handleLogin = (userData) => {
+    setIsLoggedIn(true);
     setCurrentUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const handleLogout = () => {
+    setIsLoggedIn(false);
     setCurrentUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('quizCompleted');
-    localStorage.removeItem('careerResults');
+    localStorage.removeItem('currentUser');
   };
 
   return (
     <Router>
       <div className="app">
-        {currentUser && <Navbar currentUser={currentUser} onLogout={handleLogout} />}
+        {isLoggedIn && <Navbar onLogout={handleLogout} currentUser={currentUser} />}
         <Routes>
-          <Route path="/" element={<Auth onLogin={handleLogin} />} />
-          <Route path="/home" element={currentUser ? <Home /> : <Navigate to="/" />} />
-          <Route path="/quiz" element={currentUser ? <QuizComponent /> : <Navigate to="/" />} />
-          <Route path="/recommendations" element={currentUser ? <Recommendations /> : <Navigate to="/" />} />
-          <Route path="/mentors" element={currentUser ? <MentorRecommendations /> : <Navigate to="/" />} />
+          <Route 
+            path="/" 
+            element={
+              isLoggedIn ? 
+                <Navigate to="/home" /> : 
+                <Auth onLogin={handleLogin} />
+            } 
+          />
+          <Route 
+            path="/home" 
+            element={
+              isLoggedIn ? 
+                <Home /> : 
+                <Navigate to="/" />
+            } 
+          />
+          <Route 
+            path="/quiz" 
+            element={
+              isLoggedIn ? 
+                <QuizComponent /> : 
+                <Navigate to="/" />
+            } 
+          />
+          <Route 
+            path="/recommendations" 
+            element={
+              isLoggedIn ? 
+                <Recommendations /> : 
+                <Navigate to="/" />
+            } 
+          />
+          <Route 
+            path="/mentors" 
+            element={
+              isLoggedIn ? 
+                <MentorRecommendations /> : 
+                <Navigate to="/" />
+            } 
+          />
         </Routes>
       </div>
     </Router>

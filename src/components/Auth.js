@@ -25,33 +25,43 @@ function Auth({ onLogin }) {
 
     try {
       if (isLogin) {
-        // Simulate login
-        const storedUser = localStorage.getItem('user');
-        if (!storedUser) {
-          throw new Error('No account found. Please sign up first.');
+        // Get all stored users
+        const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+        const user = storedUsers.find(u => u.email === formData.email);
+
+        if (!user) {
+          throw new Error('No account found with this email.');
         }
 
-        const user = JSON.parse(storedUser);
-        if (user.email !== formData.email || user.password !== formData.password) {
-          throw new Error('Invalid email or password');
+        if (user.password !== formData.password) {
+          throw new Error('Incorrect password.');
         }
 
-        // Store the user info
-        localStorage.setItem('currentUser', JSON.stringify({
+        // Store the current user info without password
+        const userData = {
           username: user.username,
           email: user.email
-        }));
-
-        onLogin({ username: user.username, email: user.email });
+        };
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+        onLogin(userData);
         navigate('/home');
       } else {
-        // Simulate registration
+        // Registration
         if (formData.password.length < 6) {
           throw new Error('Password must be at least 6 characters long');
         }
 
-        // Store the new user
-        localStorage.setItem('user', JSON.stringify(formData));
+        // Get all stored users
+        const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+        
+        // Check if email already exists
+        if (storedUsers.some(u => u.email === formData.email)) {
+          throw new Error('Email already registered. Please login instead.');
+        }
+
+        // Add new user to the list
+        storedUsers.push(formData);
+        localStorage.setItem('users', JSON.stringify(storedUsers));
 
         // Switch to login form after successful registration
         setIsLogin(true);
@@ -116,7 +126,7 @@ function Auth({ onLogin }) {
                 placeholder="Enter your password"
               />
             </div>
-            <button type="submit" className="auth-button">
+            <button type="submit" className="submit-button">
               {isLogin ? 'Sign In' : 'Sign Up'}
             </button>
           </form>

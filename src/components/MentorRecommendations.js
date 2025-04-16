@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './MentorRecommendations.css'; // Import your CSS file for styling
+import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import './MentorRecommendations.css';
 
 const mentors = [
   {
@@ -81,6 +82,16 @@ const mentors = [
 ];
 
 function MentorRecommendations() {
+  // Initialize EmailJS with public key
+  useEffect(() => {
+    try {
+      emailjs.init("SNChxpj_ZuqZghZWZ");
+      console.log('EmailJS initialized with public key: SNChxpj_ZuqZghZWZ');
+    } catch (error) {
+      console.error('EmailJS initialization failed:', error);
+    }
+  }, []);
+
   const [selectedExpertise, setSelectedExpertise] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMentor, setSelectedMentor] = useState(null);
@@ -121,13 +132,79 @@ function MentorRecommendations() {
     }
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (selectedSlot && selectedMentor) {
-      // Here you would typically integrate with a payment gateway
-      alert(`Payment successful! Booking confirmed with ${selectedMentor.name} for ${selectedSlot.date} at ${selectedSlot.time}`);
-      setShowPaymentModal(false);
-      setSelectedSlot(null);
-      setSelectedMentor(null);
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser || !currentUser.email) {
+          alert('Error: User email not found');
+          return;
+        }
+
+        // Proper email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const userEmail = currentUser.email.trim();
+        
+        if (!emailRegex.test(userEmail)) {
+          alert('Error: Invalid email format');
+          return;
+        }
+
+        // EmailJS template parameters with correct recipient parameter
+        const templateParams = {
+          to_email: userEmail,
+          user_email: userEmail, // Add this as a backup
+          email: userEmail, // Add this as another backup
+          from_name: "Student Guidance",
+          subject: "Booking Confirmation",
+          message: `Your booking with ${selectedMentor.name} is confirmed for ${new Date(selectedSlot.date).toLocaleDateString()} at ${selectedSlot.time}`
+        };
+
+        console.log('EmailJS Configuration:', {
+          serviceId: 'service_nubyuee',
+          templateId: 'template_vb3n686',
+          publicKey: 'SNChxpj_ZuqZghZWZ',
+          templateParams,
+          userEmail: userEmail
+        });
+
+        // Send email with explicit error handling
+        try {
+          const result = await emailjs.send(
+            'service_nubyuee',
+            'template_vb3n686',
+            templateParams
+          );
+
+          console.log('Email send result:', result);
+
+          if (result && result.status === 200) {
+            alert(`Payment successful! Booking confirmed with ${selectedMentor.name} for ${selectedSlot.date} at ${selectedSlot.time}. A confirmation email has been sent to ${userEmail}`);
+            setShowPaymentModal(false);
+            setSelectedSlot(null);
+            setSelectedMentor(null);
+          } else {
+            throw new Error(`Email sending failed with status: ${result?.status}`);
+          }
+        } catch (emailError) {
+          console.error('Email sending error details:', {
+            name: emailError.name,
+            message: emailError.message,
+            status: emailError.status,
+            text: emailError.text,
+            stack: emailError.stack,
+            userEmail: userEmail,
+            templateParams: templateParams // Log the complete template parameters
+          });
+          throw emailError;
+        }
+      } catch (error) {
+        console.error('Detailed error:', error);
+        alert('There was an issue sending the confirmation email. Your booking is confirmed, but please check your email later for the confirmation. If you don\'t receive it, please contact support.');
+        setShowPaymentModal(false);
+        setSelectedSlot(null);
+        setSelectedMentor(null);
+      }
     }
   };
 
@@ -147,7 +224,7 @@ function MentorRecommendations() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        
+
         <div className="expertise-filters">
           {allExpertise.map(expertise => (
             <button
@@ -180,7 +257,7 @@ function MentorRecommendations() {
               </div>
               <p className="mentor-experience">Experience: {mentor.experience}</p>
               <p className="mentor-availability">{mentor.availability}</p>
-              <p className="mentor-rate">${mentor.hourlyRate}/hour</p>
+              {mentor.hourlyRate && <p className="mentor-rate">₹{mentor.hourlyRate}/hour</p>}
               <button 
                 className="connect-button"
                 onClick={() => handleConnect(mentor)}
@@ -207,13 +284,13 @@ function MentorRecommendations() {
                 ×
               </button>
             </div>
-            
+
             <div className="modal-body">
               <div className="mentor-summary">
                 <img src={selectedMentor.image} alt={selectedMentor.name} />
                 <div>
                   <h3>{selectedMentor.title}</h3>
-                  <p>Rate: ${selectedMentor.hourlyRate}/hour</p>
+                  <p>Rate: ₹{selectedMentor.hourlyRate}/hour</p>
                 </div>
               </div>
 
@@ -262,7 +339,7 @@ function MentorRecommendations() {
                     <p>Selected Session: {selectedSlot.type === 'video' ? 'Video Call' : 'Phone Call'}</p>
                     <p>Date: {new Date(selectedSlot.date).toLocaleDateString()}</p>
                     <p>Time: {selectedSlot.time}</p>
-                    <p className="total">Total: ${selectedMentor.hourlyRate}</p>
+                    <p className="total">Total: ₹{selectedMentor.hourlyRate}</p>
                   </>
                 )}
               </div>
@@ -293,7 +370,7 @@ function MentorRecommendations() {
                 ×
               </button>
             </div>
-            
+
             <div className="modal-body">
               <div className="payment-summary">
                 <h3>Booking Summary</h3>
