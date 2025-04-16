@@ -1,0 +1,247 @@
+.recommendations-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.recommendations-container p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.career-circles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.career-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.circle-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.circle-progress svg {
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #f0f0f0;
+  stroke-width: 8;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: #4a90e2;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.5s ease;
+}
+
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.career-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+.analysis-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.analysis-section h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.analysis-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.career-analysis {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.career-analysis h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.career-analysis p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+.recommendations-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mentors-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mentors-button:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mentors-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .recommendations-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .career-circles {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .circle-progress {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle-text {
+    font-size: 1.2rem;
+  }
+
+  .career-label {
+    font-size: 1rem;
+  }
+}
+
+.quiz-required-message {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.quiz-required-message h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.quiz-required-message p {
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.take-quiz-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.take-quiz-button:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.career-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detail-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.detail-item h5 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+} 
