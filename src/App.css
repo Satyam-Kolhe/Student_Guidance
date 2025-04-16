@@ -5,10 +5,11 @@ body {
   padding: 0;
   background-color: #f5f7fa;
   color: #333;
+  width: 100vw;
 }
 
 .app {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
@@ -112,7 +113,9 @@ body {
   margin-top: 30px;
 }
 
-.nav-button, .submit-button, .retake-button {
+.nav-button,
+.submit-button,
+.retake-button {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -136,12 +139,14 @@ body {
   cursor: not-allowed;
 }
 
-.submit-button, .retake-button {
+.submit-button,
+.retake-button {
   background-color: #3498db;
   color: white;
 }
 
-.submit-button:hover:not(:disabled), .retake-button:hover {
+.submit-button:hover:not(:disabled),
+.retake-button:hover {
   background-color: #2980b9;
 }
 
