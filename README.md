@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+🎓 Student’s Career Guide
+📖 Overview
+Student’s Career Guide is an intelligent platform that helps students make the perfect career choice by combining AI-driven career recommendations with human expert guidance.
+We assess students through a carefully designed career assessment test and, based on their responses, our Machine Learning model suggests career paths best suited for them.
+Students can then connect with expert mentors in their chosen field for personalized guidance.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+✨ Features
+Career Assessment Test – Understands student interests, skills, and personality traits.
 
-## Available Scripts
+ML-based Career Recommendations – Suggests top career options tailored to each student.
 
-In the project directory, you can run:
+Expert Mentorship – Connect with industry professionals for advice.
 
-### `npm start`
+Personalized Dashboard – View recommendations, save preferred careers, and book mentorship sessions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User-friendly Interface – Simple, clean, and responsive design.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🛠 Tech Stack
+Frontend: React and Tailwind
 
-### `npm test`
+Backend: Node.js / Express / Flask
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Database: MySQL / MongoDB
 
-### `npm run build`
+Machine Learning: Python, scikit-learn 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Version Control: Git & GitHub
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🚀 Installation & Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Clone the repository
+git clone https://github.com/username/students-career-guide.git
 
-### `npm run eject`
+# Navigate to the project folder
+cd students-career-guide
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Install dependencies
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Start the backend server
+npm run server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Start the frontend
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🎯 Future Improvements
+More advanced ML model for better accuracy.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Integration with internship/job platforms.
 
-### Code Splitting
+Mobile app for on-the-go access.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Multilingual support.
 
-### Analyzing the Bundle Size
+👥 Contributors
+Your Name – Suraj Gunjal (Frontend development and integration)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Teammate Name – Satyam Kolhe (ML model creation and integration)
 
-### Making a Progressive Web App
+Teammate Name – Aditya Sahu (Research)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Teammate Name - Piyush Thorve (Backend development)
